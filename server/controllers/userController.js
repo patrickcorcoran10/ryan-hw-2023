@@ -7,7 +7,6 @@ if (process.env.JAWSDB_URL) {
     pool = mysql.createPool(process.env.JAWSDB_URL)
     pool.getCoonection(() => {
         connection.query(`
-        USE user_management_db;
     
     CREATE TABLE Users (
         id int not null auto_increment,
