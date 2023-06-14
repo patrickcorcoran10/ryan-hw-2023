@@ -42,15 +42,10 @@ app.set("view engine", "hbs");
 // })
 let db;
 if (process.env.JAWSDB_URL) {
-    db = mysql.createConnection(
-        {
-            Host:'co28d739i4m2sb7j.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
-            Username:'r8dwfdbtek5an22j',
-            Password:'ouh6n9obj9i3tfc3',
-            Database:'yh3tu0enaybyin99' 
-        }
-    )
+    console.log('hello patrick')
+    db = mysql.createConnection(process.env.JAWSDB_URL)
 } else {
+    console.log('hi pat')
     db = mysql.createConnection(
         {
           host: 'localhost',
