@@ -40,22 +40,7 @@ app.set("view engine", "hbs");
 //     if(err) throw err; //not connect
 //     console.log("connected as ID " + connection.threadId);
 // })
-let db;
-if (process.env.JAWSDB_URL) {
-    console.log('hello patrick')
-    db = mysql.createConnection(process.env.JAWSDB_URL)
-} else {
-    console.log('hi pat')
-    db = mysql.createConnection(
-        {
-          host: 'localhost',
-          user: process.env.DB_USER,
-          password: process.env.DB_PASSWORD,
-          database: process.env.DB_NAME
-        },
-        console.log(`Connected to the movies_db database.`)
-      );
-}
+
 
 
 const routes = require("./server/routes/user");

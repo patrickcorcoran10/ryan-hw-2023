@@ -1,15 +1,36 @@
 const mysql = require("mysql2");
 require("dotenv").config();
 
-// Connection Pool
-const pool = mysql.createPool({
-    connectionLimit : 100,
-    host : process.env.JAWSDB_URL,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME
-});
+// // Connection Pool
+let pool
+if (process.env.JAWSDB_URL) {
+    pool = mysql.createPool(process.env.JAWSDB_URL)
+} else {
+    pool = mysql.createPool({
+        connectionLimit : 100,
+        host : process.env.JAWSDB_URL,
+        user: process.env.DB_USER,
+        password: process.env.DB_PASSWORD,
+        database: process.env.DB_NAME
+    });
+}
 
+// let db;
+// if (process.env.JAWSDB_URL) {
+//     console.log('hello patrick')
+//     db = mysql.createConnection(process.env.JAWSDB_URL)
+// } else {
+//     console.log('hi pat')
+//     db = mysql.createConnection(
+//         {
+//           host: 'localhost',
+//           user: process.env.DB_USER,
+//           password: process.env.DB_PASSWORD,
+//           database: process.env.DB_NAME
+//         },
+//         console.log(`Connected to the movies_db database.`)
+//       );
+// }
 
 // View Users
 exports.view = (req, res) => {
